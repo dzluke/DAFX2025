@@ -9,41 +9,140 @@
 <body>
     <div class="container">
         <header>
-            <h1 class="title">Unsupervised Text-to-Sound Mapping</h1>
-            <p>The International Conference on Digital Audio Effects (DAFx 2025)</p>
+            <h1 class="title">Unsupervised Text-to-Sound Mapping via Embedding Space Alignment</h1>
             <p class="authors">Luke Dzwonczyk and Carmine-Emanuele Cella</p>
         </header>
         <section class="abstract">
             <h2>Abstract</h2>
             <p>
                 <!-- Replace this with the abstract of your paper -->
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
+                This work focuses on developing an artistic tool that performs an unsupervised mapping between text and sound, converting an input text string into a series of sounds from a given sound corpus. With the use of a pre-trained sound embedding model and a separate, pre-trained text embedding model, the challenge is to find a mapping between the two feature spaces. Our approach is unsupervised, which removes the need for labeled sound data, avoiding potential issues in labeling musical data and allowing any sound corpus to be used with the system. The tool performs the task of text-to-sound retrieval, creating a soundfile in which each word in the text input is mapped to a single sound in the corpus, and the resulting sounds are concatenated to play sequentially. We experiment with three different mapping methods, and perform quantitative and qualitative evaluations on the outputs. Our results demonstrate the potential of unsupervised methods for creative applications in text-to-sound mapping.
             </p>
         </section>
-        <section class="links">
+        <!-- <section class="links">
             <h2>Links</h2>
             <ul>
                 <li><a href="#link1">Link 1</a></li>
                 <li><a href="#link2">Link 2</a></li>
             </ul>
+        </section> -->
+        <section class="examples">
+            <h2>Text Input</h2>
+            <div class="text-examples-container" style="display: flex; justify-content: space-between;">
+                <div class="text-example" style="width: 48%;">
+                    <p><em>The old pond, <br>
+                        A frog jumps in: <br>
+                        Plop!</em></p>
+                    <p class="description">- Bashō</p>
+                </div>
+                <div class="text-example" style="width: 48%;">
+                    <p><em>And the days are not full enough <br>
+                        And the nights are not full enough <br>
+                        And life slips by like a field mouse <br>
+                        Not shaking the grass</em></p>
+                    <p class="description">- Ezra Pound</p>
+                </div>
+            </div>
         </section>
         <section class="audio">
             <h2>Audio Files</h2>
             <div class="audio-file">
-                <p>Audio File 1</p>
+                <p>Selected Output 1</p>
                 <audio controls>
-                    <source src="assets/audio1.mp3" type="audio/mpeg">
+                    <source src="assets/choir_haiku_MuQ_fastText_cluster_grain1000_standard_euclidean_dim5_k5_trim_silence.wav" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <ul>
+                    <li>Text Input: Bashō</li>
+                    <li>Sound Corpus: Choir</li>
+                    <li>Sound Encoder: MuQ</li>
+                    <li>Text Encoder: fastText</li>
+                    <li>Mapping Method: Cluster</li>
+                    <li>Sound Preprocessing: Grain 1000ms</li>
+                </ul>
             </div>
+
+            <div class="audio-comparison" style="display: flex; justify-content: space-between;">
+                <div class="audio-file" style="width: 48%;">
+                    <p>Selected Output 2</p>
+                    <audio controls>
+                        <source src="assets/choir_pound_MuQ_fastText_identity_grain1000_standard_euclidean_dim5_trim_silence.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <ul>
+                        <li>Text Input: Ezra Pound</li>
+                        <li>Sound Corpus: Choir</li>
+                        <li>Sound Encoder: MuQ</li>
+                        <li>Text Encoder: fastText</li>
+                        <li>Mapping Method: Identity</li>
+                        <li>Sound Preprocessing: Grain 1000ms</li>
+                    </ul>
+                </div>
+                <div class="audio-file" style="width: 48%;">
+                    <p>Selected Output 3</p>
+                    <audio controls>
+                        <source src="assets/choir_pound_MuQ_fastText_icp_grain1000_standard_euclidean_dim5_icp50_cw0.1_lr0.01_trim_silence_normalized_1.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <ul>
+                        <li>Text Input: Ezra Pound</li>
+                        <li>Sound Corpus: Choir</li>
+                        <li>Sound Encoder: MuQ</li>
+                        <li>Text Encoder: fastText</li>
+                        <li>Mapping Method: ICP</li>
+                        <li>Sound Preprocessing: Grain 1000ms</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="audio-comparison" style="display: flex; justify-content: space-between;">
+                <div class="audio-file" style="width: 48%;">
+                    <p>Selected Output 2 (Repeated  )</p>
+                    <audio controls>
+                        <source src="assets/choir_pound_MuQ_fastText_identity_grain1000_standard_euclidean_dim5_trim_silence.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <ul>
+                        <li>Text Input: Ezra Pound</li>
+                        <li>Sound Corpus: Choir</li>
+                        <li>Sound Encoder: MuQ</li>
+                        <li>Text Encoder: fastText</li>
+                        <li>Mapping Method: Identity</li>
+                        <li>Sound Preprocessing: Grain 1000ms</li>
+                    </ul>
+                </div>
+                <div class="audio-file" style="width: 48%;">
+                    <p>Selected Output 4</p>
+                    <audio controls>
+                        <source src="assets/choir_pound_MuQ_RoBERTa_identity_grain1000_standard_euclidean_dim5_trim_silence.wav" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <ul>
+                        <li>Text Input: Ezra Pound</li>
+                        <li>Sound Corpus: Choir</li>
+                        <li>Sound Encoder: MuQ</li>
+                        <li>Text Encoder: RoBERTa</li>
+                        <li>Mapping Method: Identity</li>
+                        <li>Sound Preprocessing: Grain 1000ms</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="audio-file">
-                <p>Audio File 2</p>
+                <p>Selected Output 5</p>
                 <audio controls>
-                    <source src="assets/audio2.mp3" type="audio/mpeg">
+                    <source src="assets/pres_pound_MuQ_RoBERTa_identity_grain500_standard_euclidean_dim5_trim_silence.wav" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <ul>
+                    <li>Text Input: Ezra Pound</li>
+                    <li>Sound Corpus: Polish Radio Experimental Studio samples</li>
+                    <li>Sound Encoder: MuQ</li>
+                    <li>Text Encoder: RoBERTa</li>
+                    <li>Mapping Method: Identity</li>
+                    <li>Sound Preprocessing: Grain 500ms</li>
+                </ul>
             </div>
-            <!-- Add more audio files as needed -->
         </section>
     </div>
 </body>
