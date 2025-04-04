@@ -45,8 +45,13 @@
         </section>
         <section class="audio">
             <h2>Audio Files</h2>
+            <p>
+                The sample below uses the Bashō haiku as the text input.
+                The sound corpus input is seven audio files, each of which is an individual singer in a choir performing Aftonen by the Swedish composer Alfvén.
+                With the pre-processing method "Grain 1000ms", each sound file is sliced into 1000ms segments before being embedded in the sound feature space.
+            </p>
             <div class="audio-file">
-                <p>Selected Output 1</p>
+                <!-- <p>Selected Output 1</p> -->
                 <audio controls>
                     <source src="assets/choir_haiku_MuQ_fastText_cluster_grain1000_standard_euclidean_dim5_k5_trim_silence_normalized.wav" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -61,9 +66,30 @@
                 </ul>
             </div>
 
+            <p>
+                Using the "onsets" pre-processing method, the sound files are sliced into segments based on detected onsets in the audio. This often leads to much shorter outputs.
+                The sound corpus used here is a <a href="https://www.pianobook.co.uk/packs/mothman/">sample pack</a> of bowed electric guitar with heavy processing.
+            </p>
+            <div class="audio-file">
+                <!-- <p>Selected Output 1</p> -->
+                <audio controls>
+                    <source src="assets/mothman_haiku_MuQ_fastText_cluster_onsets_standard_euclidean_dim5_k5_trim_silence_normalized.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <ul>
+                    <li>Text Input: Bashō</li>
+                    <li>Sound Corpus: Mothman</li>
+                    <li>Sound Encoder: MuQ</li>
+                    <li>Text Encoder: fastText</li>
+                    <li>Mapping Method: Cluster</li>
+                    <li>Sound Preprocessing: <b> Onsets </b></li>
+                </ul>
+            </div>
+
+            <p>The following two outputs are generated using the same text input (Ezra Pound) and sound corpus (Choir), but with different mapping methods: Identity and ICP.</p>
             <div class="audio-comparison" style="display: flex; justify-content: space-between;">
                 <div class="audio-file" style="width: 48%;">
-                    <p>Selected Output 2</p>
+                    <!-- <p>Selected Output 2</p> -->
                     <audio controls>
                         <source src="assets/choir_pound_MuQ_fastText_identity_grain1000_standard_euclidean_dim5_trim_silence_normalized.wav" type="audio/mpeg">
                         Your browser does not support the audio element.
@@ -73,12 +99,12 @@
                         <li>Sound Corpus: Choir</li>
                         <li>Sound Encoder: MuQ</li>
                         <li>Text Encoder: fastText</li>
-                        <li>Mapping Method: Identity</li>
+                        <li>Mapping Method: <b>Identity</b></li>
                         <li>Sound Preprocessing: Grain 1000ms</li>
                     </ul>
                 </div>
                 <div class="audio-file" style="width: 48%;">
-                    <p>Selected Output 3</p>
+                    <!-- <p>Selected Output 3</p> -->
                     <audio controls>
                         <source src="assets/choir_pound_MuQ_fastText_icp_grain1000_standard_euclidean_dim5_icp50_cw0.1_lr0.01_trim_silence_normalized_1.wav" type="audio/mpeg">
                         Your browser does not support the audio element.
@@ -88,15 +114,19 @@
                         <li>Sound Corpus: Choir</li>
                         <li>Sound Encoder: MuQ</li>
                         <li>Text Encoder: fastText</li>
-                        <li>Mapping Method: ICP</li>
+                        <li>Mapping Method: <b>ICP</b></li>
                         <li>Sound Preprocessing: Grain 1000ms</li>
                     </ul>
                 </div>
             </div>
 
+            <p>These two outputs are generated using the same text input (Ezra Pound) and sound corpus (Choir), but with different text encoders: fastText and RoBERTa.
+                Note the effect of a static (fastText) vs contextual (RoBERTa) text encoder on the output. With fastText, the word "and" maps to the exact same sound each time it is repeated.
+                With RoBERTa, the word "and" maps to the same "oh" vowel, but sung by a different singer.
+            </p>
             <div class="audio-comparison" style="display: flex; justify-content: space-between;">
                 <div class="audio-file" style="width: 48%;">
-                    <p>Selected Output 2 (Repeated)</p>
+                    <!-- <p>Selected Output 2 (Repeated)</p> -->
                     <audio controls>
                         <source src="assets/choir_pound_MuQ_fastText_identity_grain1000_standard_euclidean_dim5_trim_silence_normalized.wav" type="audio/mpeg">
                         Your browser does not support the audio element.
@@ -105,13 +135,13 @@
                         <li>Text Input: Ezra Pound</li>
                         <li>Sound Corpus: Choir</li>
                         <li>Sound Encoder: MuQ</li>
-                        <li>Text Encoder: fastText</li>
+                        <li>Text Encoder: <b>fastText</b></li>
                         <li>Mapping Method: Identity</li>
                         <li>Sound Preprocessing: Grain 1000ms</li>
                     </ul>
                 </div>
                 <div class="audio-file" style="width: 48%;">
-                    <p>Selected Output 4</p>
+                    <!-- <p>Selected Output 4</p> -->
                     <audio controls>
                         <source src="assets/choir_pound_MuQ_RoBERTa_identity_grain1000_standard_euclidean_dim5_trim_silence_normalized.wav" type="audio/mpeg">
                         Your browser does not support the audio element.
@@ -120,15 +150,16 @@
                         <li>Text Input: Ezra Pound</li>
                         <li>Sound Corpus: Choir</li>
                         <li>Sound Encoder: MuQ</li>
-                        <li>Text Encoder: RoBERTa</li>
+                        <li>Text Encoder: <b>RoBERTa</b></li>
                         <li>Mapping Method: Identity</li>
                         <li>Sound Preprocessing: Grain 1000ms</li>
                     </ul>
                 </div>
             </div>
 
+            <p>The following sample is generated from a different sound corpus (samples from the <a href="https://www.ableton.com/en/blog/sounds-polish-radio-experimental-studio/">Polish Radio Experimental Studio</a>) and a shorter grain size (500ms).</p>
             <div class="audio-file">
-                <p>Selected Output 5</p>
+                <!-- <p>Selected Output 5</p> -->
                 <audio controls>
                     <source src="assets/pres_pound_MuQ_RoBERTa_identity_grain500_standard_euclidean_dim5_trim_silence.wav" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -139,7 +170,7 @@
                     <li>Sound Encoder: MuQ</li>
                     <li>Text Encoder: RoBERTa</li>
                     <li>Mapping Method: Identity</li>
-                    <li>Sound Preprocessing: Grain 500ms</li>
+                    <li>Sound Preprocessing: <b>Grain 500ms</b></li>
                 </ul>
             </div>
         </section>
